@@ -1,0 +1,8 @@
+.test {
+    background-color:powderblue;
+    height: 180px;
+    padding: 20px;
+    color: lime;
+    text-shadow: 3px 2px 2px rgb(81, 6, 167);
+    text-align: center;
+}
