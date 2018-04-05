@@ -4,6 +4,8 @@ import Modal from 'react-modal'
 import ThemeContext from './context/ThemeContext'
 import ColorInput from './forms/ColorInput'
 
+import welcomeStyle from './Welcome.module.scss'
+
 const modalStyles = {
     content : {
       top                   : '50%',
@@ -15,60 +17,66 @@ const modalStyles = {
     }
   };
 
+
 class Welcome extends React.Component {
 
 
     render (){
-        let { open, closeModal } = this.props
         return( 
             <div className='Welcome'>
             <ThemeContext>{
                 (context)=>(
+                <div>
+                    <div
+                    className={welcomeStyle.container}
+                    onClick= { context.toggleModal } >
+                      <p>theme</p>
+                    </div>                    
                 <Modal
                     ariaHideApp={false}
-                    isOpen={open}
-                    onRequestClose={closeModal}
+                    isOpen={context.state.openModal}
+                    onRequestClose={context.closeModal}
                     style={modalStyles}
                     contentLabel="Example Modal">
                     <div>
                         <h2>Set Theme</h2>
-                        <p>{JSON.stringify(context.state)}</p>
-                        <div style={{width:'50%', paddingBottom:32}} >
+                        <div style={{paddingBottom:32}} >
                             <ColorInput
                             onChange ={context.handleChange}
-                            color= {context.state.bodyColor}
+                            color= {context.state.theme.bodyColor}
                             text= "Body Color"
                             name= 'bodyColor'
-                            value={context.state.bodyColor}
+                            value={context.state.theme.bodyColor}
                             />
                             <ColorInput
                             onChange ={context.handleChange}
-                            color= {context.state.topBarColor}
+                            color= {context.state.theme.topBarColor}
                             text= "Top Bar Color"
                             name= 'topBarColor'
-                            value={context.state.topBarColor}
+                            value={context.state.theme.topBarColor}
                             />
                             <ColorInput
                             onChange ={context.handleChange}
-                            color= {context.state.primaryColor}
+                            color= {context.state.theme.primaryColor}
                             text= "Primary Color"
                             name= 'primaryColor'
-                            value={context.state.primaryColor}
+                            value={context.state.theme.primaryColor}
                             />
                             <ColorInput
                             onChange ={context.handleChange}
-                            color= {context.state.secondaryColor}
+                            color= {context.state.theme.secondaryColor}
                             text= "Secondary Color"
                             name= 'secondaryColor'
-                            value={context.state.secondaryColor}
+                            value={context.state.theme.secondaryColor}
                             />
                         </div>
                         <input 
                         className="btn btn-secondary"
-                        onClick={closeModal} type="button" value="close"/>
+                        onClick={context.closeModal} type="button" value="close"/>
 
                     </div>
-                </Modal>)}
+                </Modal>
+                </div>)}
             </ThemeContext>
             </div>
         )
