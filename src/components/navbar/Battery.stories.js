@@ -119,4 +119,8 @@ class Battery extends Component {
   }
 }
 
+Battery.defaultProps = {
+  size: 'medium'
+}
+
 export default Battery;

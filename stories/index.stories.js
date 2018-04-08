@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
+import { withInfo } from '@storybook/addon-info';
 
 
 import { Button, Welcome } from '@storybook/react/demo';
@@ -17,18 +18,42 @@ storiesOf('Button', module)
 
 
 storiesOf('Battery', module).addDecorator(withKnobs)
-  .add('chrome Browser battery', () => {
-    const options = {
-      range: true,
-      min:0,
-      max:1,
-      step:0.01
-    }
+  .add('chrome Browser battery', 
+    withInfo({
+      styles: {
+        header: {
+          h1: {
+            color: 'violet'
+          }
+        }
+      },
+      text: `String or React Element with docs about my component 
+      ~~~js
+      <Button>example</Button>
+      ~~~`,
+      propDefinitions: [{
+        property: "test", // The name of the prop
+        propType: String, // The prop type. TODO: info about what this object is...
+        required: true, // True if the prop is required
+        description: "just a test", // The description of the prop
+        defaultValue: "cat" // The default value of the prop
+      }]
+  
+    })( 
+      () => {
+        const options = {
+          range: true,
+          min:0,
+          max:1,
+          step:0.01
+        }
 
-    let batteryLevel = number('charge', 0.5, options, 'charge')
+        let batteryLevel = number('charge', 0.5, options, 'charge')
 
-    return <div onClick={action('hi')} > <Battery level={batteryLevel} /></div>
-  })
+        return <Battery level={batteryLevel} />
+      }
+    )
+  )
 
 
 
