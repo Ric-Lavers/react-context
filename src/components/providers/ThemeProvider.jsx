@@ -13,8 +13,7 @@ class ThemeProvider extends Component {
   };
   componentDidMount() {
     if (localStorage.getItem("theme")) {
-      const theme = JSON.parse(localStorage.getItem("theme") );
-			this.setState({theme})
+			this.setState({ theme: JSON.parse(localStorage.getItem("theme") ) })
     }
   }
   handleChange = event => {

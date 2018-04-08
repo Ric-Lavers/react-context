@@ -8,18 +8,18 @@ import welcomeStyle from './Welcome.module.scss'
 
 const modalStyles = {
     content : {
-      top                   : '50%',
+      top                   : '70%',
       left                  : '50%',
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+      transform             : 'translate(-50%, -50%)',
+      zIndex: 1000000
     }
   };
 
 
 class Welcome extends React.Component {
-
 
     render (){
         return( 

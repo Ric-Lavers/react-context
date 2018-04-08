@@ -16,9 +16,19 @@ import NavBar from './components/navbar/NavBar'
 import Home from './components/pages/Home'
 import CommonBody from './components/pages/Body'
 
+import * as api from './api/graphQL'
+
 class App extends Component {
-  componentDidMount(){
+
+  state={
+    coders: null
+  }
+
+  async componentDidMount(){
     console.count("app did mount")
+    const res = await api.getAllCoders()
+    console.log(res)
+    res && this.setState({ coders: res })
   }
 
   render() {
@@ -26,10 +36,24 @@ class App extends Component {
       <div className="App">
         <Router>
         <ThemeProvider>
-            <NavBar/>
-            <Route exact path="/" component={ Home }/>
-            <CommonBody/>
-            <Welcome/>
+        <ThemeContext>
+          {(c)=>
+            <div style={{color:c.state.theme.bodyColor}} >
+                <NavBar/>
+                <div style={{paddingTop:60}} >
+                  <Route exact path="/" component={ Home }/>
+                  <CommonBody/>
+                  <Welcome/>
+                </div>
+                <div>
+                {this.state.coders 
+                  ?JSON.stringify(this.state.coders)
+                  :"loading"}
+                </div>
+            </div>
+          }
+          
+        </ThemeContext>
         </ThemeProvider>
         </Router>
       </div>
