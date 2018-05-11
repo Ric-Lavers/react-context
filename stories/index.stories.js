@@ -6,6 +6,8 @@ import { linkTo } from '@storybook/addon-links';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 
+import ThemeConfig from './ThemeConfig.stories'
+
 
 import { Button, Welcome } from '@storybook/react/demo';
 import Battery from '../src/components/navbar/Battery.stories'
@@ -16,6 +18,8 @@ storiesOf('Button', module)
   .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
   .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>);
 
+storiesOf('react-motion demo', module)
+  .add('motion', () => <ThemeConfig/>)
 
 storiesOf('Battery', module).addDecorator(withKnobs)
   .add('chrome Browser battery', 
@@ -32,18 +36,18 @@ storiesOf('Battery', module).addDecorator(withKnobs)
       <Button>example</Button>
       ~~~`,
       propDefinitions: [{
-        property: "test", // The name of the prop
+        property: "level", // The name of the prop
         propType: String, // The prop type. TODO: info about what this object is...
         required: true, // True if the prop is required
         description: "just a test", // The description of the prop
         defaultValue: "cat" // The default value of the prop
-      }]
+      }],
   
     })( 
       () => {
         const options = {
           range: true,
-          min:0,
+          min:0.01,
           max:1,
           step:0.01
         }

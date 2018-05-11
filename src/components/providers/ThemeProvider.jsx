@@ -13,7 +13,10 @@ class ThemeProvider extends Component {
   };
   componentDidMount() {
     if (localStorage.getItem("theme")) {
-			this.setState({ theme: JSON.parse(localStorage.getItem("theme") ) })
+      this.setState({ 
+        theme: JSON.parse(localStorage.getItem("theme")),
+        openModal: false  
+      })
     }
   }
   handleChange = event => {
@@ -42,7 +45,7 @@ class ThemeProvider extends Component {
         {this.props.children}
       </ThemeContext.Provider>
     );
-  }
+  } 
 }
 
 export default ThemeProvider;

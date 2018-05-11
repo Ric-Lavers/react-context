@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class Battery extends Component {
+  static displayName = "Battery"
   state= {
     battery: {
       level: null,
@@ -36,10 +37,10 @@ class Battery extends Component {
           });
         };
       });
-    }else{//demo
+    }else if(this.props.level){//demo
       this.setState({
         battery: {
-          level: this.props.level,
+          level: this.props.level ,
           dischargingTime: this.props.dischargingTime || 'Infinity'
         } 
       })
@@ -120,7 +121,8 @@ class Battery extends Component {
 }
 
 Battery.defaultProps = {
-  size: 'medium'
+  level: 0
 }
+// Battery.displayName = "Battery"
 
 export default Battery;
