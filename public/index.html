@@ -77,7 +77,7 @@
       var theme = JSON.parse(localStorage.getItem("theme"))
       var style = document.createElement('style');
       style.textContent =  '#loader { border-top: 16px solid '+ theme.topBarColor +'; } .cls-2 {fill: '+ theme.primaryColor +'}'+
-      ' #loader_2 { border-top: 32px solid '+ theme.secondaryColor +'; }';
+      ' body { background-color: '+ theme.secondaryColor +'; }';
       document.head.appendChild(style);
     </script>
   </head>
