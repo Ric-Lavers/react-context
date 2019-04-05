@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
+import './svg.css'
+
 class FullScreenSVG extends Component {
   static getDerivedStateFromProps(nextProps, prevState){
     if( nextProps.context ){
@@ -254,18 +256,26 @@ class FullScreenSVG extends Component {
         strokeDasharray: 1000,
         animation: `${animationName} 2s linear`,
         fill:fillColor, stroke:strokeColor, strokeWidth:2
-      }:{fill:fillColor, stroke:strokeColor, strokeWidth:2}
+      }:{
+        fill:fillColor, stroke:strokeColor, strokeWidth:2
+      }
       console.log('backgroundColor', backgroundColor )
     return( 
       <div ref={this.boundingBox} style={{marginTop:-60}} > 
         <div onClick={this.handleClick} >
-          <svg key={this.k++} ref={this.svgDraw}
+          <svg
+          
+          key={this.k++} ref={this.svgDraw}
           style={{backgroundColor:backgroundColor, width:'100vw', height:'100vh'}} 
           viewBox={`0 0 ${innerWidth} ${innerHeight}`} >
-            <polyline points={polylinePoints}
+            <polyline
+            id="main-extentions"
+            points={polylinePoints}
             style={{fill:"none",stroke:strokeColor,strokeWidth:3}} />
             {polyline
-              ?<polyline id="drawPolyline" style={drawPath} points={polylinePointsString} ref={this.path} />
+              ?<polyline 
+              id="main-path"
+              style={drawPath} points={polylinePointsString} ref={this.path} />
               :<polygon points={polylinePointsString}
               style={{fill:fillColor, stroke:strokeColor, strokeWidth:2, fillRule:'evenodd'}} />
           }

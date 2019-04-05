@@ -7,6 +7,7 @@ import Home from './Home'
 import CoolSvgDraw from './CoolSvgDraw'
 import NavBar from '../navbar/NavBar'
 import Welcome from '../Welcome'
+import MadelbrotPage from './MadelbrotPage'
 
 const PageSwitch = () => {
   return (
@@ -17,7 +18,14 @@ const PageSwitch = () => {
               <NavBar/>
               <div style={{paddingTop:60}} >
                 <Switch>
-                  <Route  path="/cool-svg-draw" render={()=> <CoolSvgDraw context= {c}/> }/>
+                    <Route
+                      path="/cool-svg-draw"
+                      render={()=>  <CoolSvgDraw context= {c}/> }
+                    />
+                    <Route
+                      path="/madelbrot"
+                      render={()=>  <MadelbrotPage context= {c}/> }
+                    />
                   <Route  exact path="/" component={ Home }/>
                 </Switch>
                 <Welcome context={c}/>

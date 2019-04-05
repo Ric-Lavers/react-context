@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@storybook/react": "^3.4.0",
+    "@storybook/react": "4.0.0-alpha.12",
     "custom-react-scripts": "0.2.2",
     "gsap": "^1.20.4",
     "react": "^16.3.1",
